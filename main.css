@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {}
+
+body {
+    align-items: center;
+}
+
+.main_section {
+    height: 100vh;
+    z-index: 1;
+    position: relative;
+    background-image: url("assets/halloween_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.sound_section img {
+    filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(70deg) brightness(108%) contrast(108%);
+    height: 10vh;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.game-title {
+    color: #fff;
+    text-align: center;
+    font-size: 2.5rem;
+    padding-top: 100px;
+    padding-left: 30px;
+}
+
+.input {
+    font-size: 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0.75em 1.5em;
+    background-color: #fff;
+    width: 30vw;
+    text-align: center;
+    text-transform: uppercase;
+    margin: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.input-box {
+    padding-top: 100px;
+}
+
+.btn-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.btn {
+    border: 2px solid black;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 4px;
+    padding: 14px 30px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Creepster', cursive;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: white;
+    color: goldenrod;
+}
