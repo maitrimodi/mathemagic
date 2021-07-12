@@ -11,7 +11,7 @@ body {
     align-items: center;
 }
 
-.main_section {
+.main-section {
     height: 100vh;
     z-index: 1;
     position: relative;
@@ -21,7 +21,7 @@ body {
     background-size: cover;
 }
 
-.sound_section img {
+#sound-section img {
     filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(70deg) brightness(108%) contrast(108%);
     height: 10vh;
     float: right;
@@ -37,15 +37,18 @@ body {
     padding-left: 30px;
 }
 
+.game-title h1 {
+    font-family: 'Creepster', cursive;
+}
+
 .input {
     font-size: 16px;
     font-size: 1rem;
-    font-family: inherit;
+    font-family: 'Creepster', cursive;
     padding: 0.75em 1.5em;
     background-color: #fff;
     width: 30vw;
     text-align: center;
-    text-transform: uppercase;
     margin: auto;
     display: block;
     border-radius: 4px;
@@ -60,7 +63,7 @@ body {
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    padding-top: 80px;
+    padding-top: 80px
 }
 
 .btn {
