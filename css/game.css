@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    align-items: center;
+    font-family: 'Creepster', cursive;
+}
+
+.main-section{
+    height: 93vh;
+    z-index: 1;
+    position: relative;
+    background-image: url("/assets/halloween_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+}
+
+footer{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    height: 60px;
+    font-size: 35px;
+}
+
+.game-footer{
+    display: inline-flex;
+    padding: 10px 40px 0px 40px;
+}
+
+.game-footer p {
+    padding: 4px;
+}
+#game-time{
+    margin-left: auto;
+}
+
+.ghosts{
+    /* display: flex; */
+}
+
+.ghost{
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+}
+
+.wizard{
+    height: 200px;
+    width: 200px;
+    margin-left: 1100px;
+    margin-top: 500px;
+}

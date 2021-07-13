@@ -37,6 +37,9 @@ const soundAction = (e) => {
     }
 }
 const music = new Audio("assets/music_bg.mp3")
+console.log(document.querySelector("#sound-section"));
 
 
 document.querySelector("#sound-section").addEventListener("click", soundAction)
+
+
