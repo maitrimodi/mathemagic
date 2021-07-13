@@ -19,6 +19,8 @@ body {
     background-position: center center;
     background-size: cover;
     display: flex;
+    flex-flow: column wrap;
+    align-content: space-between;
 }
 
 footer{
@@ -42,19 +44,38 @@ footer{
     margin-left: auto;
 }
 
-.ghosts{
-    /* display: flex; */
-}
 
 .ghost{
-    height: 100px;
-    width: 100px;
+    height: 85px;
+    width: 85px;
     margin: 10px;
 }
 
 .wizard{
-    height: 200px;
-    width: 200px;
-    margin-left: 1100px;
-    margin-top: 500px;
+    height: 120px;
+    width: 120px;
+    justify-content: right;
+}
+
+.question{
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    display: flex;
+    margin-left: 35px;
+}
+
+.question div{
+    padding-right: 5px;
+}
+
+.answer{
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.wizard-div{
+    margin-top: auto;
 }
