@@ -20,6 +20,14 @@
 
 //audio code
 
+const startGame = () => {
+
+    const playerName = document.querySelector("#text-input").value;
+    window.localStorage.setItem("current-player", playerName.trim().toUpperCase());
+
+}
+
+
 const soundAction = (e) => {
 
     console.log(e.target)
@@ -37,9 +45,12 @@ const soundAction = (e) => {
     }
 }
 const music = new Audio("assets/music_bg.mp3")
-console.log(document.querySelector("#sound-section"));
+
+
+
+
+
 
 
 document.querySelector("#sound-section").addEventListener("click", soundAction)
-
-
+document.querySelector("#start").addEventListener("click", startGame)
