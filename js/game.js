@@ -8,86 +8,13 @@ let numbers = [];
 let marginTop = 480;
 let paddingLeft1 = 0;
 let paddingLeft2 = 0;
-
 let paddingLeft3 = 0;
-
 let paddingLeft4 = 0;
-
 let paddingLeft5 = 0;
 let ghost;
-
 let randomTransistionDigits = [];
-
 let selectedNumber = Math.floor(Math.random() * (4 - 0) + 0);
 
-const generateQuestions = () => {
-    let Nos = document.querySelectorAll(".number");
-    for (let no of Nos) {
-        let firstNumber = Math.floor(Math.random() * ((15 - 1) + 1) + 1);
-        let secondNumber = Math.floor(Math.random() * ((10 - 1) + 1) + 1);
-        console.log(no);
-
-        no.innerHTML = "<p>" + firstNumber + " x " + secondNumber + " =  ? </p>"
-
-        numbers.push([firstNumber, secondNumber]);
-
-    }
-}
-window.onload = () => {
-    let myStorage = window.localStorage;
-    let audio = false;
-    audio = myStorage.getItem('audio');
-
-    const music = new Audio("../assets/music_bg.mp3")
-
-    if (audio === "true") {
-        music.play();
-    } else {
-        music.pause();
-    }
-
-    let time = document.querySelector("#time-remaining").innerText;
-
-    counter = setInterval(() => {
-        document.querySelector("#time-remaining").innerText = time--;
-        if (time === -1) clearInterval(counter);
-    }, 1000);
-
-
-
-    generateQuestions();
-
-
-
-
-    let answer = (numbers[selectedNumber][0] * numbers[selectedNumber][1]);
-
-    // document.querySelector("#wizard").innerHTML = "<div> <img src='../assets/wizard.png' class='wizard'></div> <div id='answer' class='answer'>" + answer + "</div>"
-
-
-
-
-
-    ghost = setInterval(() => {
-        ghost1();
-        checkCollison(document.querySelector("#ghost1"));
-    }, 100)
-
-
-    // setInterval(ghost2, getRandomInt(80, 450));
-    // setInterval(ghost3, getRandomInt(80, 450));
-    // setInterval(ghost4, getRandomInt(80, 450));
-    // setInterval(ghost5, getRandomInt(80, 450));
-
-    // checkCollison();
-
-
-
-
-
-
-
-}
 const checkCollison = (elem) => {
     // console.log("COLLISION");
 
@@ -117,12 +44,71 @@ const checkCollison = (elem) => {
 
 }
 
+const generateQuestions = () => {
+    let Nos = document.querySelectorAll(".number");
+    for (let no of Nos) {
+        let firstNumber = Math.floor(Math.random() * ((15 - 1) + 1) + 1);
+        let secondNumber = Math.floor(Math.random() * ((10 - 1) + 1) + 1);
+        console.log(no);
+
+        no.innerHTML = "<p>" + firstNumber + " x " + secondNumber + " =  ? </p>"
+
+        numbers.push([firstNumber, secondNumber]);
+
+    }
+}
+
+window.onload = () => {
+    let myStorage = window.localStorage;
+    let audio = false;
+    audio = myStorage.getItem('audio');
+
+    const music = new Audio("../assets/music_bg.mp3")
+
+    if (audio === "true") {
+        music.play();
+    } else {
+        music.pause();
+    }
+
+    let time = document.querySelector("#time-remaining").innerText;
+
+    counter = setInterval(() => {
+        document.querySelector("#time-remaining").innerText = time--;
+        if (time === -1) clearInterval(counter);
+    }, 1000);
+
+    generateQuestions();
+
+    let answer = (numbers[selectedNumber][0] * numbers[selectedNumber][1]);
+
+    document.querySelector("#wizard").innerHTML = "<div> <img src='../assets/wizard.png' class='wizard'></div> <div id='answer' class='answer'>" + answer + "</div>"
+
+    ghost = setInterval(() => {
+        ghost1();
+        checkCollison(document.querySelector("#ghost1"));
+    }, 100)
+
+
+    // setInterval(ghost2, getRandomInt(80, 450));
+    // setInterval(ghost3, getRandomInt(80, 450));
+    // setInterval(ghost4, getRandomInt(80, 450));
+    // setInterval(ghost5, getRandomInt(80, 450));
+
+    // checkCollison();
+}
+
 const ghost1 = () => {
     // console.log("GHOST!");
 
     let ghost1 = document.querySelector("#ghost1");
-    paddingLeft1 += 10;
-    ghost1.style.paddingLeft = paddingLeft1 + "px";
+    if(paddingLeft1 < 1300){
+        paddingLeft1 += 10;
+        ghost1.style.paddingLeft = paddingLeft1 + "px";
+    } else{
+        alert("Game over");
+    }
+    
 
 }
 const ghost2 = () => {
@@ -166,7 +152,6 @@ const createGame = (e) => {
         if (marginTop <= 0) {
             marginTop = 480
             wizadry.style.marginTop = marginTop + "px"
-
         } else {
             marginTop -= 120
             wizadry.style.marginTop = marginTop + "px"
@@ -176,17 +161,11 @@ const createGame = (e) => {
         if (marginTop >= 480) {
             marginTop = 0;
             wizadry.style.marginTop = marginTop + "px"
-
         } else {
             marginTop += 120
             wizadry.style.marginTop = marginTop + "px"
-
         }
-
     }
-
-
-
 }
 
 function getRandomInt(min, max) {
