@@ -13,9 +13,19 @@ let paddingLeft4 = 0;
 let paddingLeft5 = 0;
 let ghost;
 let randomTransistionDigits = [];
-let selectedNumber = Math.floor(Math.random() * (4 - 0) + 0);
+let selectedNumber;
 let level = 0;
 let answer = 0;
+
+
+
+
+let ghost1Location
+let ghost2Location
+let ghost3Location
+let ghost4Location
+let ghost5Location
+
 const checkCollison = (elem) => {
     // console.log("COLLISION");
 
@@ -47,6 +57,7 @@ const checkCollison = (elem) => {
 
 const generateQuestions = () => {
     numbers = [];
+    selectedNumber = Math.floor(Math.random() * (4 - 0) + 0);
     let Nos = document.querySelectorAll(".number");
     for (let no of Nos) {
         let firstNumber = Math.floor(Math.random() * ((15 - 1) + 1) + 1);
@@ -86,11 +97,21 @@ window.onload = () => {
 
     generateQuestions();
 
+
+
+    ghost1Location = document.querySelector('#ghost1')
+    ghost2Location = document.querySelector('#ghost2')
+    ghost3Location = document.querySelector('#ghost3')
+    ghost4Location = document.querySelector('#ghost4')
+    ghost5Location = document.querySelector('#ghost5')
+
     // let answer = (numbers[selectedNumber][0] * numbers[selectedNumber][1]);
 
     // document.querySelector("#wizard").innerHTML = "<div> <img src='../assets/wizard.png' class='wizard'></div> <div id='answer' class='answer'>" + answer + "</div>"
 
     gamePlay();
+
+
 
     // setInterval(ghost2, getRandomInt(80, 450));
     // setInterval(ghost3, getRandomInt(80, 450));
@@ -100,38 +121,81 @@ window.onload = () => {
     // checkCollison();
 }
 
-const gamePlay = () => {
-    console.log(level)
+const initializePosition = () => {
+    ghost1Location.style.paddingLeft = 0 + "px";
+    ghost2Location.style.paddingLeft = 0 + "px";
+    ghost3Location.style.paddingLeft = 0 + "px";
+    ghost4Location.style.paddingLeft = 0 + "px";
+    ghost5Location.style.paddingLeft = 0 + "px";
+
+    paddingLeft1 = 0;
+    paddingLeft2 = 0;
+    paddingLeft3 = 0;
+    paddingLeft4 = 0;
+    paddingLeft5 = 0;
+
+
+}
+
+const gamePlay = (clear) => {
+
     level++;
+
     if (level <= 5) {
+
+        if (clear === true) {
+            document.querySelector("#current-level").innerHTML = level
+            console.log("CLEAR", clear);
+            clearInterval(setGhost1);
+            clearInterval(setGhost2);
+            clearInterval(setGhost3);
+            clearInterval(setGhost4);
+            clearInterval(setGhost5);
+
+            generateQuestions();
+            initializePosition();
+
+
+        }
         console.log("lvel", level)
         setGhost1 = setInterval(() => {
             ghost1();
-            // checkCollison(document.querySelector("#ghost1"));
-        }, 100)
+
+        }, getRandomInt(50, 150))
 
 
 
 
         setGhost2 = setInterval(() => {
             ghost2();
-            // checkCollison(document.querySelector("#ghost1"));
-        }, 100)
+
+        }, getRandomInt(50, 150))
 
         setGhost3 = setInterval(() => {
             ghost3();
-            // checkCollison(document.querySelector("#ghost1"));
-        }, 100)
+
+        }, getRandomInt(50, 150))
 
         setGhost4 = setInterval(() => {
             ghost4();
-            // checkCollison(document.querySelector("#ghost1"));
-        }, 100)
+
+        }, getRandomInt(50, 150))
 
         setGhost5 = setInterval(() => {
             ghost5();
-            // checkCollison(document.querySelector("#ghost1"));
-        }, 100)
+
+        }, getRandomInt(50, 150))
+    } else {
+
+        console.log("GAME OVER");
+        clearInterval(setGhost1);
+        clearInterval(setGhost2);
+        clearInterval(setGhost3);
+        clearInterval(setGhost4);
+        clearInterval(setGhost5);
+
+        initializePosition();
+
     }
 
     // }
@@ -250,11 +314,7 @@ const createGame = (e) => {
     } else if (e.keyCode == '32') {
         console.log("SPACE")
         let wizardLocation = document.querySelector('#wizard').getBoundingClientRect();
-        let ghost1Location = document.querySelector('#ghost1')
-        let ghost2Location = document.querySelector('#ghost2')
-        let ghost3Location = document.querySelector('#ghost3')
-        let ghost4Location = document.querySelector('#ghost4')
-        let ghost5Location = document.querySelector('#ghost5')
+
 
 
 
@@ -263,11 +323,11 @@ const createGame = (e) => {
             // console.log("1")
             // clearInterval(setGhost1)
             let selectedGhost = numbers[0][0] * numbers[0][1]
-            console.log(selectedGhost);
-            console.log(answer);
+            console.log("question", numbers[0]);
+            console.log("answer", answer);
             if (selectedGhost === answer) {
                 console.log("increase level")
-                gamePlay();
+                gamePlay(true);
             } else {
                 console.log("change question");
                 generateQuestions();
@@ -276,12 +336,12 @@ const createGame = (e) => {
             // generateQuestions();
 
         } else if (wizardLocation.y >= 100 && wizardLocation.y < 200) {
-            let selectedGhost = numbers[1][0] * numbers[0][1]
-            console.log(selectedGhost);
-            console.log(answer);
+            let selectedGhost = numbers[1][0] * numbers[1][1]
+            console.log("question", numbers[1]);
+            console.log("answer", answer);
             if (selectedGhost === answer) {
                 console.log("increase level")
-                gamePlay();
+                gamePlay(true);
 
             } else {
                 console.log("change question");
@@ -289,11 +349,11 @@ const createGame = (e) => {
             }
         } else if (wizardLocation.y >= 200 && wizardLocation.y < 300) {
             let selectedGhost = numbers[2][0] * numbers[2][1]
-            console.log(selectedGhost);
-            console.log(answer);
+            console.log("question", numbers[2]);
+            console.log("answer", answer);
             if (selectedGhost === answer) {
                 console.log("increase level")
-                gamePlay();
+                gamePlay(true);
 
             } else {
                 console.log("change question");
@@ -301,11 +361,11 @@ const createGame = (e) => {
             }
         } else if (wizardLocation.y >= 300 && wizardLocation.y < 400) {
             let selectedGhost = numbers[3][0] * numbers[3][1]
-            console.log(selectedGhost);
-            console.log(answer);
+            console.log("question", numbers[3]);
+            console.log("answer", answer);
             if (selectedGhost === answer) {
                 console.log("increase level")
-                gamePlay();
+                gamePlay(true);
 
             } else {
                 console.log("change question");
@@ -313,11 +373,11 @@ const createGame = (e) => {
             }
         } else if (wizardLocation.y >= 400) {
             let selectedGhost = numbers[4][0] * numbers[4][1]
-            console.log(selectedGhost);
-            console.log(answer);
+            console.log("question", numbers[4]);
+            console.log("answer", answer);
             if (selectedGhost === answer) {
                 console.log("increase level")
-                gamePlay();
+                gamePlay(true);
 
             } else {
                 console.log("change question");
@@ -337,7 +397,7 @@ document.onkeydown = createGame;
 
 
 const ghostClick = (e) => {
-    let wizardLocation = document.querySelector('#wizard').getBoundingClientRect();
+    let wizardLocation = document.querySelector('#wizard').getBoundingClientRect()
     let ghost1Location = document.querySelector('#ghost1').getBoundingClientRect()
     let ghost2Location = document.querySelector('#ghost2').getBoundingClientRect()
     let ghost3Location = document.querySelector('#ghost3').getBoundingClientRect()
@@ -350,6 +410,7 @@ const ghostClick = (e) => {
     console.log("3", ghost3Location)
     console.log("4", ghost4Location)
     console.log("5", ghost5Location)
+
 
 }
 document.body.addEventListener("click", ghostClick)
