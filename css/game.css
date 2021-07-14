@@ -50,13 +50,11 @@ footer {
     height: 55px;
     width: 55px;
     margin: 10px;
-    
 }
 
 .wizard {
     height: 120px;
     width: 120px;
-    
     justify-content: right;
 }
 
@@ -98,13 +96,30 @@ footer {
     padding-left: 600px;
 }
 
-
-/* #ghost1 {
-    padding-left: 900px;
-    background-color: yellow;
+.btn {
+    border: 2px solid black;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 4px;
+    padding: 14px 30px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Creepster', cursive;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    align-self: center;
 }
 
-#ghost2 {
-    padding-left: 100px;
-    background-color: aqua;
-} */
+.btn:hover {
+    background-color: white;
+    color: goldenrod;
+}
+
+.btn-back{
+   padding-left: 620px;
+   padding-top: 20px;
+   display: none;
+}
