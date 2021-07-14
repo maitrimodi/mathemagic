@@ -31,10 +31,14 @@ console.log(audio);
 }
 
 const startGame = () => {
-
+    console.log("start game");
+    
     const playerName = document.querySelector("#text-input").value;
-    window.localStorage.setItem("current-player", playerName.trim().toUpperCase());
-
+    console.log(playerName);
+    
+    
+    window.localStorage.setItem("current-player", playerName);
+    location.href = "pages/game.html"
 }
 
 

@@ -13,11 +13,13 @@ let paddingLeft4 = 0;
 let paddingLeft5 = 0;
 let ghost;
 let randomTransistionDigits = [];
-let selectedNumber;
+let selectedNumber = 0;
 let level = 0;
 let answer = 0;
 
 let counter;
+let myStorage = window.localStorage;
+
 
 
 let ghost1Location
@@ -25,6 +27,20 @@ let ghost2Location
 let ghost3Location
 let ghost4Location
 let ghost5Location
+let isGameOver = false;
+const storeCurrentLevel = (level) => {
+    
+    if(!isGameOver){
+        let players = myStorage.getItem("players");
+        players = players ? JSON.parse(players) : [];
+
+        let player = myStorage.getItem("current-player");
+        players.push([player,level]);
+        myStorage.setItem("players", JSON.stringify(players));
+        isGameOver = true;
+    }
+    
+}
 
 const checkCollison = (elem) => {
     // console.log("COLLISION");
@@ -56,6 +72,7 @@ const checkCollison = (elem) => {
 }
 
 const generateQuestions = () => {
+    selectedNumber = Math.floor(Math.random() * (4 - 0) + 0);
     numbers = [];
     selectedNumber = Math.floor(Math.random() * (4 - 0) + 0);
     let Nos = document.querySelectorAll(".number");
@@ -201,14 +218,14 @@ const gamePlay = (clear) => {
         clearInterval(setGhost5);
 
         initializePosition();
-
+        storeCurrentLevel(level);
     }
 
     // }
 }
 const ghost1 = () => {
     // console.log("GHOST!");
-
+    // clearInterval(setGhost1);
     let ghost1 = document.querySelector("#ghost1");
     if (paddingLeft1 < 1250) {
         paddingLeft1 += 10;
@@ -216,17 +233,15 @@ const ghost1 = () => {
     } else {
         gameOver();
         clearInterval(setGhost1);
+        storeCurrentLevel(level);
 
     }
 
 
 }
 const ghost2 = () => {
-
+    // clearInterval(setGhost2);
     let ghost2 = document.querySelector("#ghost2");
-
-
-
     if (paddingLeft2 < 1250) {
         paddingLeft2 += 10;
         ghost2.style.paddingLeft = paddingLeft2 + "px";
@@ -234,13 +249,13 @@ const ghost2 = () => {
     } else {
         gameOver();
         clearInterval(setGhost2);
-
+        storeCurrentLevel(level);
     }
 
     // console.log(ghost2);
 }
 const ghost3 = () => {
-
+    // clearInterval(setGhost3);
     let ghost3 = document.querySelector("#ghost3");
 
     if (paddingLeft3 < 1250) {
@@ -251,14 +266,14 @@ const ghost3 = () => {
         gameOver();
 
         clearInterval(setGhost3);
-
+        storeCurrentLevel(level);
     }
 
 
     // console.log(ghost3);
 }
 const ghost4 = () => {
-
+    // clearInterval(setGhost4);
     let ghost4 = document.querySelector("#ghost4");
     if (paddingLeft4 < 1250) {
         paddingLeft4 += 10;
@@ -269,14 +284,14 @@ const ghost4 = () => {
         gameOver();
 
         clearInterval(setGhost4);
-
+        storeCurrentLevel(level);
     }
 
 
     // console.log(ghost4);
 }
 const ghost5 = () => {
-
+    // clearInterval(setGhost5);
     let ghost5 = document.querySelector("#ghost5");
 
     if (paddingLeft5 < 1250) {
@@ -289,6 +304,7 @@ const ghost5 = () => {
         gameOver();
 
         clearInterval(setGhost5);
+        storeCurrentLevel(level);
 
     }
 
@@ -342,7 +358,7 @@ const createGame = (e) => {
                 generateQuestions();
             }
 
-            // generateQuestions();
+            
 
         } else if (wizardLocation.y >= 100 && wizardLocation.y < 200) {
             let selectedGhost = numbers[1][0] * numbers[1][1]
