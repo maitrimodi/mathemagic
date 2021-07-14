@@ -12,6 +12,7 @@ body {
 
 .main-section {
     height: 93vh;
+    width: 100%;
     z-index: 1;
     position: relative;
     background-image: url("../assets/halloween_bg.jpg");
@@ -29,7 +30,7 @@ footer {
     color: white;
     display: flex;
     height: 60px;
-    font-size: 35px;
+    font-size: 5vh;
 }
 
 .game-footer {
@@ -79,8 +80,9 @@ footer {
 
 .wizard-div {
     margin-top: auto;
-    /* padding-top: 10px; */
-    /* margin-right: 10px; */
+    z-index: 0;
+    position: fixed;
+    left: 90%;
 }
 
 .ghosts {
