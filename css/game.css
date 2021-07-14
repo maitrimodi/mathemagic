@@ -89,6 +89,12 @@ footer {
     gap: 20px;
 }
 
+.game-over {
+    color: yellow;
+    font-size: 5rem;
+    display: none;
+}
+
 
 /* #ghost1 {
     padding-left: 900px;
