@@ -10,7 +10,7 @@ body {
     font-family: 'Creepster', cursive;
 }
 
-.main-section{
+.main-section {
     height: 93vh;
     z-index: 1;
     position: relative;
@@ -23,7 +23,7 @@ body {
     align-content: space-between;
 }
 
-footer{
+footer {
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
     color: white;
@@ -32,7 +32,7 @@ footer{
     font-size: 35px;
 }
 
-.game-footer{
+.game-footer {
     display: inline-flex;
     padding: 10px 40px 0px 40px;
 }
@@ -40,42 +40,57 @@ footer{
 .game-footer p {
     padding: 4px;
 }
-#game-time{
+
+#game-time {
     margin-left: auto;
 }
 
-
-.ghost{
-    height: 85px;
-    width: 85px;
+.ghost {
+    height: 55px;
+    width: 55px;
     margin: 10px;
+    background-color: red;
 }
 
-.wizard{
+.wizard {
     height: 120px;
     width: 120px;
+    background-color: red;
     justify-content: right;
 }
 
-.question{
+.question {
     color: white;
     font-weight: bolder;
     font-size: 20px;
-    display: flex;
-    margin-left: 35px;
+    margin-left: 10px;
 }
 
-.question div{
+.question div {
     padding-right: 5px;
 }
 
-.answer{
+.answer {
     color: white;
     font-size: 30px;
     font-weight: bolder;
     text-align: center;
 }
 
-.wizard-div{
+.wizard-div {
     margin-top: auto;
+    /* padding-top: 10px; */
+    /* margin-right: 10px; */
 }
+
+.ghosts {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+/* #ghost1 {
+    padding-left: 10px;
+    background-color: yellow;
+} */
