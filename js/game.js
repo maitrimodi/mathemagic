@@ -156,10 +156,11 @@ const initializePosition = () => {
 
 const gamePlay = (clear) => {
 
-    level++;
+
+    
 
     if (level <= 5) {
-
+        level++;
         if (clear === true) {
             document.querySelector("#current-level").innerHTML = level
             console.log("CLEAR", clear);
@@ -308,16 +309,11 @@ const ghost5 = () => {
 
     }
 
-    // console.log(ghost5);
 }
 
 const createGame = (e) => {
     e = e || window.event;
     let wizadry = document.querySelector("#wizard");
-
-    // console.log("WIZADRY", wizadry.style.marginTop)
-    // console.log("WIZADRY margin", marginTop)
-
 
     if (e.keyCode == '38') { //upp
         if (marginTop <= 0) {
@@ -344,9 +340,6 @@ const createGame = (e) => {
 
 
         if (wizardLocation.y <= 0) {
-            // console.log("wizard", wizardLocation)
-            // console.log("1")
-            // clearInterval(setGhost1)
             let selectedGhost = numbers[0][0] * numbers[0][1]
             console.log("question", numbers[0]);
             console.log("answer", answer);
@@ -426,29 +419,12 @@ const gameOver = () => {
     document.querySelector(".main-section").style.removeProperty("align-content")
     document.querySelector(".main-section").style.setProperty("justify-content", "center")
     document.querySelector(".main-section").style.setProperty("align-items", "center")
-
+    document.querySelector(".btn-back").style.removeProperty("display")
     document.querySelector("#ghosts").style.setProperty("display", "none")
     document.querySelector("#wizard").style.setProperty("display", "none")
     document.querySelector(".game-over").style.setProperty("display", "initial")
+    document.querySelector(".btn-back").style.setProperty("display", "initial");
     clearInterval(counter)
 
 }
 
-// const ghostClick = (e) => {
-//     let wizardLocation = document.querySelector('#wizard').getBoundingClientRect()
-//     let ghost1Location = document.querySelector('#ghost1').getBoundingClientRect()
-//     let ghost2Location = document.querySelector('#ghost2').getBoundingClientRect()
-//     let ghost3Location = document.querySelector('#ghost3').getBoundingClientRect()
-//     let ghost4Location = document.querySelector('#ghost4').getBoundingClientRect()
-//     let ghost5Location = document.querySelector('#ghost5').getBoundingClientRect()
-
-//     // console.log("wizard", wizardLocation)
-//     console.log("1", ghost1Location)
-//     console.log("2", ghost2Location)
-//     console.log("3", ghost3Location)
-//     console.log("4", ghost4Location)
-//     console.log("5", ghost5Location)
-
-
-// }
-// document.body.addEventListener("click", ghostClick)

@@ -41,3 +41,30 @@ ul li {
     color: #fff;
     font-size: 2.5rem;
 }
+
+.btn {
+    border: 2px solid black;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 4px;
+    padding: 14px 30px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Creepster', cursive;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    align-self: center;
+}
+
+.btn:hover {
+    background-color: white;
+    color: goldenrod;
+}
+
+.btn-back{
+   padding-left: 690px;
+   padding-top: 20px;
+}
