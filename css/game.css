@@ -79,9 +79,6 @@ footer {
 
 .wizard-div {
     margin-top: auto;
-    z-index: 0;
-    position: fixed;
-    left: 1300px;
     /* padding-top: 10px; */
     /* margin-right: 10px; */
 }
@@ -92,13 +89,13 @@ footer {
     gap: 20px;
 }
 
-.ghost1{
-    position: absolute;
-    z-index: 2;
-    top: 0px;
-}
 
 /* #ghost1 {
-    padding-left: 10px;
+    padding-left: 900px;
     background-color: yellow;
+}
+
+#ghost2 {
+    padding-left: 100px;
+    background-color: aqua;
 } */
