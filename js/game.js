@@ -17,7 +17,7 @@ let selectedNumber;
 let level = 0;
 let answer = 0;
 
-
+let counter;
 
 
 let ghost1Location
@@ -187,7 +187,13 @@ const gamePlay = (clear) => {
         }, getRandomInt(50, 150))
     } else {
 
-        console.log("GAME OVER");
+        gameOver();
+
+
+
+
+
+
         clearInterval(setGhost1);
         clearInterval(setGhost2);
         clearInterval(setGhost3);
@@ -208,7 +214,7 @@ const ghost1 = () => {
         paddingLeft1 += 10;
         ghost1.style.paddingLeft = paddingLeft1 + "px";
     } else {
-        console.log("Game over");
+        gameOver();
         clearInterval(setGhost1);
 
     }
@@ -226,7 +232,7 @@ const ghost2 = () => {
         ghost2.style.paddingLeft = paddingLeft2 + "px";
 
     } else {
-        console.log("Game over");
+        gameOver();
         clearInterval(setGhost2);
 
     }
@@ -242,7 +248,8 @@ const ghost3 = () => {
         ghost3.style.paddingLeft = paddingLeft3 + "px";
 
     } else {
-        console.log("Game over");
+        gameOver();
+
         clearInterval(setGhost3);
 
     }
@@ -259,7 +266,8 @@ const ghost4 = () => {
 
 
     } else {
-        console.log("Game over");
+        gameOver();
+
         clearInterval(setGhost4);
 
     }
@@ -278,7 +286,8 @@ const ghost5 = () => {
 
 
     } else {
-        console.log("Game over");
+        gameOver();
+
         clearInterval(setGhost5);
 
     }
@@ -396,21 +405,34 @@ function getRandomInt(min, max) {
 document.onkeydown = createGame;
 
 
-const ghostClick = (e) => {
-    let wizardLocation = document.querySelector('#wizard').getBoundingClientRect()
-    let ghost1Location = document.querySelector('#ghost1').getBoundingClientRect()
-    let ghost2Location = document.querySelector('#ghost2').getBoundingClientRect()
-    let ghost3Location = document.querySelector('#ghost3').getBoundingClientRect()
-    let ghost4Location = document.querySelector('#ghost4').getBoundingClientRect()
-    let ghost5Location = document.querySelector('#ghost5').getBoundingClientRect()
+const gameOver = () => {
+    document.querySelector(".main-section").style.removeProperty("flex-flow")
+    document.querySelector(".main-section").style.removeProperty("align-content")
+    document.querySelector(".main-section").style.setProperty("justify-content", "center")
+    document.querySelector(".main-section").style.setProperty("align-items", "center")
 
-    // console.log("wizard", wizardLocation)
-    console.log("1", ghost1Location)
-    console.log("2", ghost2Location)
-    console.log("3", ghost3Location)
-    console.log("4", ghost4Location)
-    console.log("5", ghost5Location)
-
+    document.querySelector("#ghosts").style.setProperty("display", "none")
+    document.querySelector("#wizard").style.setProperty("display", "none")
+    document.querySelector(".game-over").style.setProperty("display", "initial")
+    clearInterval(counter)
 
 }
-document.body.addEventListener("click", ghostClick)
+
+// const ghostClick = (e) => {
+//     let wizardLocation = document.querySelector('#wizard').getBoundingClientRect()
+//     let ghost1Location = document.querySelector('#ghost1').getBoundingClientRect()
+//     let ghost2Location = document.querySelector('#ghost2').getBoundingClientRect()
+//     let ghost3Location = document.querySelector('#ghost3').getBoundingClientRect()
+//     let ghost4Location = document.querySelector('#ghost4').getBoundingClientRect()
+//     let ghost5Location = document.querySelector('#ghost5').getBoundingClientRect()
+
+//     // console.log("wizard", wizardLocation)
+//     console.log("1", ghost1Location)
+//     console.log("2", ghost2Location)
+//     console.log("3", ghost3Location)
+//     console.log("4", ghost4Location)
+//     console.log("5", ghost5Location)
+
+
+// }
+// document.body.addEventListener("click", ghostClick)
