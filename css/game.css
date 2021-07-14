@@ -50,13 +50,13 @@ footer {
     height: 55px;
     width: 55px;
     margin: 10px;
-    background-color: red;
+    
 }
 
 .wizard {
     height: 120px;
     width: 120px;
-    background-color: red;
+    
     justify-content: right;
 }
 
@@ -95,6 +95,7 @@ footer {
     color: yellow;
     font-size: 5rem;
     display: none;
+    padding-left: 600px;
 }
 
 
