@@ -122,20 +122,11 @@ window.onload = () => {
     ghost4Location = document.querySelector('#ghost4')
     ghost5Location = document.querySelector('#ghost5')
 
-    // let answer = (numbers[selectedNumber][0] * numbers[selectedNumber][1]);
-
-    // document.querySelector("#wizard").innerHTML = "<div> <img src='../assets/wizard.png' class='wizard'></div> <div id='answer' class='answer'>" + answer + "</div>"
-
     gamePlay();
 
 
 
-    // setInterval(ghost2, getRandomInt(80, 450));
-    // setInterval(ghost3, getRandomInt(80, 450));
-    // setInterval(ghost4, getRandomInt(80, 450));
-    // setInterval(ghost5, getRandomInt(80, 450));
-
-    // checkCollison();
+    
 }
 
 const initializePosition = () => {
@@ -155,12 +146,8 @@ const initializePosition = () => {
 }
 
 const gamePlay = (clear) => {
-
-
-    
-
     if (level <= 5) {
-        level++;
+        
         if (clear === true) {
             level++;
 
@@ -207,29 +194,17 @@ const gamePlay = (clear) => {
         }, getRandomInt(50, 150))
 
     } else {
-
+        console.log("You win")
         gameOver();
+        document.querySelector(".game-over").innerText = "You win"
 
-
-
-
-
-
-        // clearInterval(setGhost1);
-        // clearInterval(setGhost2);
-        // clearInterval(setGhost3);
-        // clearInterval(setGhost4);
-        // clearInterval(setGhost5);
-
-        // initializePosition();
         storeCurrentLevel(level);
     }
 
-    // }
+    
 }
 const ghost1 = () => {
-    // console.log("GHOST!");
-    // clearInterval(setGhost1);
+    
     let ghost1 = document.querySelector("#ghost1");
     if (paddingLeft1 < 1250) {
         paddingLeft1 += 10;
@@ -350,6 +325,7 @@ const createGame = (e) => {
             if (selectedGhost === answer) {
                 if (level === 5) {
                     gameOver();
+                    
                     storeCurrentLevel(level);
                     return
                 } else {
@@ -444,6 +420,9 @@ document.onkeydown = createGame;
 
 
 const gameOver = () => {
+    // win condition
+    if(level === 5)
+        document.querySelector(".game-over").innerText = "You win";
     document.querySelector(".main-section").style.removeProperty("flex-flow")
     document.querySelector(".main-section").style.removeProperty("align-content")
     document.querySelector(".main-section").style.setProperty("justify-content", "center")
