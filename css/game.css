@@ -50,11 +50,13 @@ footer {
     height: 55px;
     width: 55px;
     margin: 10px;
+    
 }
 
 .wizard {
     height: 120px;
     width: 120px;
+    
     justify-content: right;
 }
 
