@@ -14,7 +14,7 @@ let paddingLeft5 = 0;
 let ghost;
 let randomTransistionDigits = [];
 let selectedNumber = 0;
-let level = 0;
+let level = 1;
 let answer = 0;
 
 let counter;
@@ -29,17 +29,17 @@ let ghost4Location
 let ghost5Location
 let isGameOver = false;
 const storeCurrentLevel = (level) => {
-    
-    if(!isGameOver){
+
+    if (!isGameOver) {
         let players = myStorage.getItem("players");
         players = players ? JSON.parse(players) : [];
 
         let player = myStorage.getItem("current-player");
-        players.push([player,level]);
+        players.push([player, level]);
         myStorage.setItem("players", JSON.stringify(players));
         isGameOver = true;
     }
-    
+
 }
 
 const checkCollison = (elem) => {
@@ -156,11 +156,12 @@ const initializePosition = () => {
 
 const gamePlay = (clear) => {
 
-    level++;
 
     if (level <= 5) {
 
         if (clear === true) {
+            level++;
+
             document.querySelector("#current-level").innerHTML = level
             console.log("CLEAR", clear);
             clearInterval(setGhost1);
@@ -174,7 +175,7 @@ const gamePlay = (clear) => {
 
 
         }
-        console.log("lvel", level)
+
         setGhost1 = setInterval(() => {
             ghost1();
 
@@ -202,6 +203,7 @@ const gamePlay = (clear) => {
             ghost5();
 
         }, getRandomInt(50, 150))
+
     } else {
 
         gameOver();
@@ -211,13 +213,13 @@ const gamePlay = (clear) => {
 
 
 
-        clearInterval(setGhost1);
-        clearInterval(setGhost2);
-        clearInterval(setGhost3);
-        clearInterval(setGhost4);
-        clearInterval(setGhost5);
+        // clearInterval(setGhost1);
+        // clearInterval(setGhost2);
+        // clearInterval(setGhost3);
+        // clearInterval(setGhost4);
+        // clearInterval(setGhost5);
 
-        initializePosition();
+        // initializePosition();
         storeCurrentLevel(level);
     }
 
@@ -233,6 +235,7 @@ const ghost1 = () => {
     } else {
         gameOver();
         clearInterval(setGhost1);
+
         storeCurrentLevel(level);
 
     }
@@ -351,22 +354,32 @@ const createGame = (e) => {
             console.log("question", numbers[0]);
             console.log("answer", answer);
             if (selectedGhost === answer) {
-                console.log("increase level")
-                gamePlay(true);
+                if (level === 5) {
+                    gameOver();
+                    storeCurrentLevel(level);
+                    return
+                } else {
+                    gamePlay(true);
+                }
             } else {
                 console.log("change question");
                 generateQuestions();
             }
 
-            
+
 
         } else if (wizardLocation.y >= 100 && wizardLocation.y < 200) {
             let selectedGhost = numbers[1][0] * numbers[1][1]
             console.log("question", numbers[1]);
             console.log("answer", answer);
             if (selectedGhost === answer) {
-                console.log("increase level")
-                gamePlay(true);
+                if (level === 5) {
+                    gameOver();
+                    storeCurrentLevel(level);
+                    return
+                } else {
+                    gamePlay(true);
+                }
 
             } else {
                 console.log("change question");
@@ -377,8 +390,13 @@ const createGame = (e) => {
             console.log("question", numbers[2]);
             console.log("answer", answer);
             if (selectedGhost === answer) {
-                console.log("increase level")
-                gamePlay(true);
+                if (level === 5) {
+                    gameOver();
+                    storeCurrentLevel(level);
+                    return
+                } else {
+                    gamePlay(true);
+                }
 
             } else {
                 console.log("change question");
@@ -389,8 +407,13 @@ const createGame = (e) => {
             console.log("question", numbers[3]);
             console.log("answer", answer);
             if (selectedGhost === answer) {
-                console.log("increase level")
-                gamePlay(true);
+                if (level === 5) {
+                    gameOver();
+                    storeCurrentLevel(level);
+                    return
+                } else {
+                    gamePlay(true);
+                }
 
             } else {
                 console.log("change question");
@@ -401,8 +424,13 @@ const createGame = (e) => {
             console.log("question", numbers[4]);
             console.log("answer", answer);
             if (selectedGhost === answer) {
-                console.log("increase level")
-                gamePlay(true);
+                if (level === 5) {
+                    gameOver();
+                    storeCurrentLevel(level);
+                    return
+                } else {
+                    gamePlay(true);
+                }
 
             } else {
                 console.log("change question");
